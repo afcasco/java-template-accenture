@@ -21,6 +21,10 @@ jobs:
         with:
           java-version: '8'
           distribution: 'temurin'
+          
+      - name: Chmod
+        if: always()
+        run: chmod +x mvnw
       
       - name: Build with Maven. No tests run
         if: always()
