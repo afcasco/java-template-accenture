@@ -44,10 +44,9 @@ public class RoomController {
     @GetMapping("/rooms/{roomName}")
     public ResponseEntity<Room> getRoomByRoomName(@PathVariable("roomName") String roomName){
         Optional<Room> room = roomRepository.findByRoomName(roomName);
-        if (!room.isPresent()){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(room.get(), HttpStatus.OK);
+        return room.map(
+                value -> new ResponseEntity<>(value, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping("/room")
