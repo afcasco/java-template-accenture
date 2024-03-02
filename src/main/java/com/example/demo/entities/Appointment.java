@@ -100,12 +100,13 @@ public class Appointment {
                     appointment.getFinishesAt().equals(this.getFinishesAt())){
                 return true;
                     }
-            if (appointment.getFinishesAt().isAfter(this.getStartsAt()) && appointment.getFinishesAt().isBefore(this.getFinishesAt())){
+            if (appointment.getFinishesAt().isAfter(this.getStartsAt())
+                    && appointment.getFinishesAt().isBefore(this.getFinishesAt())){
                 return true;
             }
-            if ( appointment.getStartsAt().isAfter(this.getStartsAt()) && appointment.getStartsAt().isBefore(this.getFinishesAt())){
-                return true;
-            }
+
+            return appointment.getStartsAt().isAfter(this.getStartsAt())
+                    && appointment.getStartsAt().isBefore(this.getFinishesAt());
         }
         
         return false;
