@@ -23,8 +23,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class DoctorController {
 
-    @Autowired
-    DoctorRepository doctorRepository;
+    private final DoctorRepository doctorRepository;
+
+    public DoctorController(DoctorRepository doctorRepository) {
+        this.doctorRepository = doctorRepository;
+    }
 
     @GetMapping("/doctors")
     public ResponseEntity<List<Doctor>> getAllDoctors(){
