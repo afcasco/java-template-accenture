@@ -49,7 +49,7 @@ class RoomJpaUnitTest {
         entityManager.persist(room2);
         entityManager.persist(room3);
 
-        Iterable rooms = repository.findAll();
+        Iterable<Room> rooms = repository.findAll();
 
         assertThat(rooms).hasSize(3).contains(room1, room2, room3);
         
@@ -81,7 +81,7 @@ class RoomJpaUnitTest {
 
         repository.deleteByRoomName(room2.getRoomName());
 
-        Iterable rooms = repository.findAll();
+        Iterable<Room> rooms = repository.findAll();
 
         assertThat(rooms).hasSize(2).contains(room1, room3);
     }
