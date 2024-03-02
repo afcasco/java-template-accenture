@@ -53,7 +53,7 @@ class DoctorJpaUnitTest {
         entityManager.persist(doc2);
         entityManager.persist(doc3);
 
-        Iterable doctors = repository.findAll();
+        Iterable<Doctor> doctors = repository.findAll();
 
         assertThat(doctors).hasSize(3).contains(doc1, doc2, doc3);
         
@@ -84,7 +84,7 @@ class DoctorJpaUnitTest {
 
         repository.deleteById(doc2.getId());
 
-        Iterable doctors = repository.findAll();
+        Iterable<Doctor> doctors = repository.findAll();
 
         assertThat(doctors).hasSize(2).contains(doc1, doc3);
     }
