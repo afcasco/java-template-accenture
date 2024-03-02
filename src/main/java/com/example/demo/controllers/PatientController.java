@@ -44,10 +44,9 @@ public class PatientController {
     @GetMapping("/patients/{id}")
     public ResponseEntity<Patient> getPatientById(@PathVariable("id") long id){
         Optional<Patient> patient = patientRepository.findById(id);
-        if (! patient.isPresent()){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(patient.get(),HttpStatus.OK);
+        return patient.map(
+                value -> new ResponseEntity<>(value, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping("/patient")
