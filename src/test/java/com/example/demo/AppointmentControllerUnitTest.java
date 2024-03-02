@@ -1,7 +1,5 @@
 package com.example.demo;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -10,8 +8,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,8 +20,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 
 import com.example.demo.controllers.AppointmentController;
 import com.example.demo.repositories.*;
@@ -108,7 +102,7 @@ class AppointmentControllerUnitTest{
 
 
 
-        List<Appointment> appointments = new ArrayList<Appointment>();
+        List<Appointment> appointments = new ArrayList<>();
         appointments.add(appointment);
         
         when(appointmentRepository.findAll()).thenReturn(appointments);
@@ -147,7 +141,7 @@ class AppointmentControllerUnitTest{
 
 
 
-        List<Appointment> appointments = new ArrayList<Appointment>();
+        List<Appointment> appointments = new ArrayList<>();
         appointments.add(appointment);
         
         when(appointmentRepository.findAll()).thenReturn(appointments);
@@ -160,7 +154,7 @@ class AppointmentControllerUnitTest{
     
     @Test
     void shouldGetNoAppointments() throws Exception{
-        List<Appointment> appointments = new ArrayList<Appointment>();
+        List<Appointment> appointments = new ArrayList<>();
         when(appointmentRepository.findAll()).thenReturn(appointments);
         mockMvc.perform(get("/api/appointments"))
                 .andExpect(status().isNoContent());
@@ -186,7 +180,7 @@ class AppointmentControllerUnitTest{
         Appointment appointment = new Appointment(patient, doctor, room, startsAt, finishesAt);
         Appointment appointment2 = new Appointment(patient2, doctor2, room, startsAt2, finishesAt2);
 
-        List<Appointment> appointments = new ArrayList<Appointment>();
+        List<Appointment> appointments = new ArrayList<>();
         appointments.add(appointment);
         appointments.add(appointment2);
 
