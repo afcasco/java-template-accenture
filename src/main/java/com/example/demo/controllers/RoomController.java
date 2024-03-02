@@ -24,8 +24,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class RoomController {
 
-    @Autowired
-    RoomRepository roomRepository;
+    private final RoomRepository roomRepository;
+
+    public RoomController(RoomRepository roomRepository) {
+        this.roomRepository = roomRepository;
+    }
 
     @GetMapping("/rooms")
     public ResponseEntity<List<Room>> getAllRooms(){
