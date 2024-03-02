@@ -254,7 +254,7 @@ class AppointmentJpaUnitTest {
         entityManager.persist(appointment3);
 
         repoAppointments.deleteAll(); 
-        Iterable appointments = repoAppointments.findAll();
+        Iterable<Appointment> appointments = repoAppointments.findAll();
         assertThat(appointments).isEmpty();
     }
     
