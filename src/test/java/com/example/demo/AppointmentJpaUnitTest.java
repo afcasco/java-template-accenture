@@ -108,7 +108,7 @@ class AppointmentJpaUnitTest {
         entityManager.persist(appointment2);
         entityManager.persist(appointment3);
 
-        Iterable appointments = repoAppointments.findAll();
+        Iterable<Appointment> appointments = repoAppointments.findAll();
 
         assertThat(appointments).hasSize(3).contains(appointment1, appointment2, appointment3);
         
