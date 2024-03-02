@@ -206,7 +206,7 @@ class AppointmentJpaUnitTest {
 
         repoAppointments.deleteById(appointment2.getId());
 
-        Iterable appointments = repoAppointments.findAll();
+        Iterable<Appointment> appointments = repoAppointments.findAll();
         assertThat(appointments).hasSize(2).contains(appointment1, appointment3);
     }
 
